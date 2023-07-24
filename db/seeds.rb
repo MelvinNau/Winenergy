@@ -32,7 +32,6 @@ wine_2 = vendor_1.wines.create(
   designation: "Haut Médoc - Cru bourgeois exceptionnel",
   alcohol: 14,
   years: 2005,
-  price: 1500,
   url_img: "wine_2.jpeg"
 )
 
@@ -44,7 +43,6 @@ wine_3 = vendor_2.wines.create(
   designation: "Champagne Grand Cru",
   alcohol: 12,
   years: 2010,
-  price: 2000,
   url_img: "wine_3.jpeg"
 )
 
@@ -56,7 +54,6 @@ wine_4 = vendor_2.wines.create(
   designation: "Côtes du Rhône",
   alcohol: 14,
   years: 2012,
-  price: 1800,
   url_img: "wine_4.jpeg"
 )
 
@@ -68,7 +65,6 @@ wine_5 = vendor_1.wines.create(
   designation: "Côtes du Roussillon",
   alcohol: 11,
   years: 2018,
-  price: 1800,
   url_img: "wine_4.jpeg"
 )
 
@@ -80,7 +76,6 @@ wine_6 = vendor_2.wines.create(
   designation: "Santenay",
   alcohol: 12,
   years: 2015,
-  price: 1800,
   url_img: "wine_4.jpeg"
 )
 
@@ -92,7 +87,6 @@ wine_7 = vendor_1.wines.create(
   designation: "Saumur-Champigny",
   alcohol: 15,
   years: 2016,
-  price: 1800,
   url_img: "wine_4.jpeg"
 )
 
@@ -104,7 +98,6 @@ wine_8 = vendor_2.wines.create(
   designation: "Alsace",
   alcohol: 13,
   years: 2017,
-  price: 1800,
   url_img: "wine_4.jpeg"
 )
 
@@ -116,7 +109,6 @@ wine_9 = vendor_1.wines.create(
   designation: "Petit Chablis",
   alcohol: 13,
   years: 2018,
-  price: 1800,
   url_img: "wine_4.jpeg"
 )
 
@@ -128,7 +120,6 @@ wine_10 = vendor_2.wines.create(
   designation: "Pessac Léognan",
   alcohol: 13,
   years: 2018,
-  price: 1800,
   url_img: "wine_4.jpeg"
 )
 
