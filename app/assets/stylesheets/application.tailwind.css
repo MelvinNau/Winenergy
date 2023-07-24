@@ -6,7 +6,7 @@
 
 @layer components {
   .wine_card {
-    @apply border border-gray-400 p-4 max-w-sm rounded-md
+    @apply border border-gray-400 p-4 max-w-sm rounded-md h-full
   }
   .wine_card:hover {
     @apply hover:scale-105	

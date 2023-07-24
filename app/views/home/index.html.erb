@@ -1,20 +1,42 @@
-<div class="flex flex-col gap-y-4">
+<div class="flex flex-col gap-y-12">
     <% if current_user %>
         <span class="text-xl"> 
             <%= t("home.welcome") %> <%= current_user.first_name %>
         </span>
     <% end %>
     <span class="text-2xl"><%= t("home.sentence") %></span>
-    <span class="text-3xl"><%= t("home.best_wines") %></span>
-    <div class="flex flex-row gap-x-4">
-        <% @wines_better_scores.each do |wine| %>
-            <%= render "wines/partials/product_sheet", wine: wine, display: "score" %>
-        <% end %>
+    <div class="flex flex-col" data-controller="slider">
+        <h1 class="text-3xl text-gray-900 text-center mb-4"><%= t("home.best_wines") %></h1>
+        <div class="flex overflow-x-scroll no-scrollbar py-4" data-slider-target="scrollContainer">
+            <% @wines_better_scores.each_with_index do |wine, index| %>
+                <%= render "wines/partials/product_sheet", wine: wine, display: "score", index: index %>
+            <% end %>
+        </div>
+        <div class="flex mx-auto my-8">
+            <ul class="flex justify-center">
+                <% @wines_better_scores.each_with_index do |wine, index| %>
+                    <li class="h-6 w-6 rounded-full mx-2 cursor-pointer bg-gray-500" data-slider-target="indicator" data-image-id="<%= index %>" data-action="click->slider#scrollTo"></li>
+                <% end %>
+            </ul>
+        </div>
     </div>
-    <span class="text-3xl"><%= t("home.best_prices") %></span>
-    <div class="flex flex-row gap-x-4">
-        <% @wines_better_prices.each do |wine| %>
-            <%= render "wines/partials/product_sheet", wine: wine, display: "price" %>
-        <% end %>
+    <div class="flex flex-col" data-controller="slider">
+        <h1 class="text-3xl text-gray-900 text-center mb-4"><%= t("home.best_prices") %></h1>
+        <div class="flex overflow-x-scroll no-scrollbar py-4" data-slider-target="scrollContainer">
+            <% @wines_better_prices.each_with_index do |wine, index| %>
+                <%= render "wines/partials/product_sheet", wine: wine, display: "price", index: index %>
+            <% end %>
+        </div>
+        <div class="flex mx-auto my-8">
+            <ul class="flex justify-center">
+                <% @wines_better_prices.each_with_index do |wine, index| %>
+                    <li class="h-6 w-6 rounded-full mx-2 cursor-pointer bg-gray-500" data-slider-target="indicator" data-image-id="<%= index %>" data-action="click->slider#scrollTo"></li>
+                <% end %>
+            </ul>
+        </div>
     </div>
 </div>
+
+
+
+  
