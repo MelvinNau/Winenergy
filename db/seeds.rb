@@ -20,7 +20,7 @@ wine_1 = vendor_1.wines.create(
   designation: "Margaux",
   alcohol: 12,
   years: 1999,
-  url_img: "wine_1.jpg"
+  url_img: "BORDEAUX.png"
 )
   
 wine_2 = vendor_1.wines.create(
@@ -31,7 +31,7 @@ wine_2 = vendor_1.wines.create(
   designation: "Haut Médoc - Cru bourgeois exceptionnel",
   alcohol: 14,
   years: 2005,
-  url_img: "wine_2.jpg"
+  url_img: "BORDEAUX.png"
 )
 
 wine_3 = vendor_2.wines.create(
@@ -42,7 +42,7 @@ wine_3 = vendor_2.wines.create(
   designation: "Champagne Grand Cru",
   alcohol: 12,
   years: 2010,
-  url_img: "wine_3.jpg"
+  url_img: "CHAMPAGNE.png"
 )
 
 wine_4 = vendor_2.wines.create(
@@ -53,7 +53,7 @@ wine_4 = vendor_2.wines.create(
   designation: "Côtes du Rhône",
   alcohol: 14,
   years: 2012,
-  url_img: "wine_4.jpg"
+  url_img: "RHONE.png"
 )
 
 wine_5 = vendor_1.wines.create(
@@ -64,7 +64,7 @@ wine_5 = vendor_1.wines.create(
   designation: "Côtes du Roussillon",
   alcohol: 11,
   years: 2018,
-  url_img: "wine_4.jpg"
+  url_img: "LANGUEDOC.png"
 )
 
 wine_6 = vendor_2.wines.create(
@@ -75,7 +75,7 @@ wine_6 = vendor_2.wines.create(
   designation: "Santenay",
   alcohol: 12,
   years: 2015,
-  url_img: "wine_4.jpg"
+  url_img: "BOURGOGNE.png"
 )
 
 wine_7 = vendor_1.wines.create(
@@ -86,7 +86,7 @@ wine_7 = vendor_1.wines.create(
   designation: "Saumur-Champigny",
   alcohol: 15,
   years: 2016,
-  url_img: "wine_4.jpg"
+  url_img: "LOIRE.png"
 )
 
 wine_8 = vendor_2.wines.create(
@@ -97,7 +97,7 @@ wine_8 = vendor_2.wines.create(
   designation: "Alsace",
   alcohol: 13,
   years: 2017,
-  url_img: "wine_4.jpg"
+  url_img: "ALSACE.png"
 )
 
 wine_9 = vendor_1.wines.create(
@@ -108,7 +108,7 @@ wine_9 = vendor_1.wines.create(
   designation: "Petit Chablis",
   alcohol: 13,
   years: 2018,
-  url_img: "wine_4.jpg"
+  url_img: "RHONE.png"
 )
 
 wine_10 = vendor_2.wines.create(
@@ -119,7 +119,7 @@ wine_10 = vendor_2.wines.create(
   designation: "Pessac Léognan",
   alcohol: 13,
   years: 2018,
-  url_img: "wine_4.jpg"
+  url_img: "BORDEAUX.png"
 )
 
 # Notes

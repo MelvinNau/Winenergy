@@ -17,7 +17,7 @@ class Wine < ApplicationRecord
   def score?
     total_score = notes.sum { |note| note.score? }
     average_score = total_score.to_f / notes.count
-    average_score.nan? ? -1 : average_score
+    average_score.nan? ? -1 : average_score.round(2)
   end
 
   def self.all_with_notes
