@@ -24,7 +24,7 @@ wine_1 = vendor_1.wines.create(
 )
   
 wine_2 = vendor_1.wines.create(
-  name: "",
+  name: "Bordeaux",
   domain: "Château Malescasse",
   label: 1,
   variety: "Cabernet Sauvignon",
@@ -112,7 +112,7 @@ wine_9 = vendor_1.wines.create(
 )
 
 wine_10 = vendor_2.wines.create(
-  name: "",
+  name: "Bord'o",
   domain: "Domaine de la solitude",
   label: 3,
   variety: "Merlot",
