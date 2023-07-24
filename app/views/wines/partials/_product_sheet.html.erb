@@ -5,7 +5,7 @@
             <div class="flex flex-col <%= !user_signed_in? ? 'justify-between' : ''%>">
                 <%= information(wine, !user_signed_in?) %>
                 <% if display == "price" %>
-                    <span><%= wine.prices.last.price %>€</span>
+                    <span><%= wine.prices.first.price %>€</span>
                 <% else %>
                     <span><%= wine.score? %>/5</span>
                 <% end %>
