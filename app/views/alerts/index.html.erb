@@ -1,0 +1,41 @@
+<div>
+    <%= link_to '<- Retour', :back %>
+</div>
+<div class="mx-auto md:w-2/3 w-full flex">
+    <% if !@alerts.empty? %>
+        <div class="w-full">
+            <span>Mes alertes</span>
+            <div class="p-4 w-full">
+                <table class="w-full table-auto">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2">#</th>
+                            <th class="px-4 py-2">Domain</th>
+                            <th class="px-4 py-2">Label</th>
+                            <th class="px-4 py-2">Designation</th>
+                            <th class="px-4 py-2">Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @alerts.each_with_index do |alert, index| %>
+                            <% alert = Alert.find_by(wine_id: alert.wine_id) %>
+                            <tr>
+                                <td class="border px-4 py-2 text-center"><%= index + 1 %></td>
+                                <td class="border px-4 py-2 text-center"><%= alert.domain %></td>
+                                <td class="border px-4 py-2 text-center"><%= alert.variety %></td>
+                                <td class="border px-4 py-2 text-center"><%= alert.designation %></td>
+                                <td class="border px-4 py-2 text-center">
+                                    <%= button_to alert_path(alert.wine_id), method: :delete, class: "text-white bg-sky-400 px-3 py-2 rounded-xl" do %>
+                                        Supprimer
+                                    <% end %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <% else %>
+        <span>Vous n'avez pas encore d'alertes</span>
+    <% end %>
+</div>

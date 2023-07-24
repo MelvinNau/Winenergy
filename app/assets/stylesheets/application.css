@@ -1,0 +1,52 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+#modal {
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  top: 4rem;
+  width: 400px;
+  word-break: break-word;
+  border-radius: 6px;
+  background: #bad5ff;
+}
+
+[data-controller="modal"] {
+  display: block;
+}
+
+[data-controller="modal"].hidden {
+  display: none;
+}
+
+.list-group {
+  position: absolute;
+  background: white;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  /* border: #bad5ff solid 1px;
+  border-radius: 1rem; */
+}
+
+a.result:hover {
+  background-color: rgb(0, 255, 255);
+}
+
+.active {
+  background-color: rgb(0, 255, 255);
+}

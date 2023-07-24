@@ -1,0 +1,51 @@
+<div>
+    <%= link_to '<- Retour', :back %>
+</div>
+<div class="mx-auto md:w-2/3 w-full flex">
+    <% if !@favorites.empty? %>
+        <div class="">
+            <span>Mes favoris</span>
+            <div class="p-4">
+                <table class="w-full table-auto">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2">#</th>
+                            <th class="px-4 py-2">Name</th>
+                            <th class="px-4 py-2">Domain</th>
+                            <th class="px-4 py-2">Label</th>
+                            <th class="px-4 py-2">Variety</th>
+                            <th class="px-4 py-2">Designation</th>
+                            <th class="px-4 py-2">Alcohol</th>
+                            <th class="px-4 py-2">Years</th>
+                            <th class="px-4 py-2">Price</th>
+                            <th class="px-4 py-2">Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @favorites.each_with_index do |favorite, index| %>
+                            <% wine = Wine.find(favorite.wine_id) %>
+                            <tr>
+                                <td class="border px-4 py-2"><%= index + 1 %></td>
+                                <td class="border px-4 py-2"><%= wine.name %></td>
+                                <td class="border px-4 py-2"><%= wine.domain %></td>
+                                <td class="border px-4 py-2"><%= wine.label %></td>
+                                <td class="border px-4 py-2"><%= wine.variety %></td>
+                                <td class="border px-4 py-2"><%= wine.designation %></td>
+                                <td class="border px-4 py-2"><%= wine.alcohol %></td>
+                                <td class="border px-4 py-2"><%= wine.years %></td>
+                                <td class="border px-4 py-2"><%= wine.price %></td>
+                                <td class="border px-4 py-2">
+                                    <%= button_to favorite_path(wine.id), method: :delete, class: "text-white bg-sky-400 px-3 py-2 rounded-xl" do %>
+                                        Supprimer
+                                    <% end %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <% else %>
+        <span>Vous n'avez pas encore de favoris</span>
+    <% end %>
+</div>

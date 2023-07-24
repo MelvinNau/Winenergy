@@ -1,0 +1,101 @@
+<div id="<%= dom_id @wine %>" class="w-full flex flex-col gap-y-12">
+  <div class="flex flex-row gap-x-24">
+    <div class="flex flex-col">
+      <%= image_tag @wine.url_img %>
+      <div class="flex flex-row gap-x-8 mx-auto pt-4">
+        <% if @add_to_favorites.nil? %>
+          <span class="text-center mx-auto"> 
+            <%= button_to favorites_path(wine: @wine.id) do %>
+              <%= image_tag "favorites_empty.svg", class: "h-16 w-16 mx-auto" %>
+            <% end %>
+          </span>
+        <% else %>
+          <span class="text-center mx-auto"> 
+            <%= button_to favorite_path(@add_to_favorites), method: :delete do %>
+              <%= image_tag "favorites.svg", class: "h-16 w-16" %>
+            <% end %>
+          </span>
+        <% end %>
+
+        <% if @add_to_alerts.nil? %>
+          <span class="text-center mx-auto"> 
+            <%= button_to alerts_path(wine: @wine.id), method: :post do %>
+              <%= image_tag "bell_empty.svg", class: "h-16 w-16 mx-auto" %>
+            <% end %>
+          </span>
+        <% else %>
+          <span class="text-center mx-auto"> 
+            <%= button_to alert_path(@add_to_alerts), method: :delete do %>
+              <%= image_tag "bell.svg", class: "h-16 w-16" %>
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex flex-col gap-y-4 max-w-xs w-full">
+      <div class="flex flex-row gap-x-4 justify-between w-full">
+        <p class="">
+          <strong class="block font-medium mb-1"><%= t("wine.name") %></strong>
+          <%= @wine.name %>
+        </p>
+
+        <p class="">
+          <strong class="block font-medium mb-1"><%= t("wine.domain") %></strong>
+          <%= @wine.domain %>
+        </p>
+      </div>
+      <div class="flex flex-row gap-x-4 justify-between w-full">
+        <p class="">
+          <strong class="block font-medium mb-1"><%= t("wine.label") %></strong>
+          <%= @wine.label %>
+        </p>
+      </div>
+      <div class="flex flex-row gap-x-4 justify-between w-full">
+        <p class="">
+          <strong class="block font-medium mb-1"><%= t("wine.variety") %></strong>
+          <%= @wine.variety %>
+        </p>
+        <p class="">
+          <strong class="block font-medium mb-1"><%= t("wine.desgination") %></strong>
+          <%= @wine.designation %>
+        </p>
+      </div>
+      <div class="flex flex-row gap-x-4 justify-between w-full">
+        <p class="">
+          <strong class="block font-medium mb-1"><%= t("wine.alcohol") %></strong>
+          <%= @wine.alcohol %>
+        </p>
+        <p class="">
+          <strong class="block font-medium mb-1"><%= t("wine.years") %></strong>
+          <%= @wine.years %>
+        </p>
+      </div>
+      <div class="flex flex-row gap-x-4  justify-center w-full">
+        <strong class="block font-medium mb-1 text-3xl text-center"><%= @wine.prices.first.price %> €</strong>
+      </div>
+    </div>  
+    <div class="flex flex-col gap-y-4 max-w-xs w-full">
+      <% if @wine.score? != -1 %>
+        <div class="text-center text-2xl">
+          <span><%= t("wine.notation") %> <%= @wine.score? %>/5</span>
+          <span class="text-xs"><%= @wine.notes.count %> <%= t("wine.note") %></span>
+        </div>
+      <% else %>
+          <div class="text-center text-2xl">
+            <span><%= t("wine.no_note") %></span>
+          </div>
+      <% end %>
+      <%= link_to @wine.vendor.url, class: "max-w-xs w-full my-auto text-5xl rounded-xl bg-sky-400 text-white px-4 py-3 text-center"  do %>
+        <%= t("wine.buy") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="">
+    <span class="text-2xl"><%= t("wine.chart") %></span>
+    <canvas
+      data-controller="chart"
+      data-chart-data-value="<%= @chart_data.to_json %>"
+      data-chart-options-value="<%= @chart_options.to_json %>"
+    ></canvas>
+  </div>
+</div>

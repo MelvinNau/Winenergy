@@ -1,0 +1,18 @@
+<%= link_to link_to_by_signed_in(user_signed_in?, wine) do %>
+    <div class="wine_card">
+        <div class="flex flex-row">
+            <%= image_tag wine.url_img %>
+            <div class="flex flex-col <%= !user_signed_in? ? 'justify-between' : ''%>">
+                <%= information(wine, !user_signed_in?) %>
+                <% if display == "price" %>
+                    <span><%= wine.prices.last.price %>€</span>
+                <% else %>
+                    <span><%= wine.score? %>/5</span>
+                <% end %>
+                <% if !user_signed_in? %>
+                    <span class="text-center text-xs mt-auto">Connectez-vous pour profiter de nos offres</span>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>

@@ -1,0 +1,53 @@
+<div class="flex flex-col gap-y-4">
+    <% if current_user %>
+        <span class="text-xl">Bonjour <%= current_user.first_name %></span>
+    <% end %>
+    <span class="text-2xl">Vous êtes connectés en tant qu'expert</span>
+    <% if @all_wines_not_reviewed_by_user.empty? %>
+        <span>Vous avez déjà noté tout les vins disponibles ...</span>
+    <% else %>
+        <span class="text-3xl">Voici la liste des vins que vous n'avez pas encore jugé</span>
+         <table class="w-full table-auto">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">#</th>
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">Domain</th>
+                    <th class="px-4 py-2">Label</th>
+                    <th class="px-4 py-2">Variety</th>
+                    <th class="px-4 py-2">Designation</th>
+                    <th class="px-4 py-2">Alcohol</th>
+                    <th class="px-4 py-2">Years</th>
+                    <th class="px-4 py-2">Price</th>
+                    <th class="px-4 py-2">Voir</th>
+                    <th class="px-4 py-2">Noter</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% @all_wines_not_reviewed_by_user.each_with_index do |wine, index| %>
+                <tr>
+                    <td class="border px-4 py-2"><%= index + 1 %></td>
+                    <td class="border px-4 py-2"><%= wine.name %></td>
+                    <td class="border px-4 py-2"><%= wine.domain %></td>
+                    <td class="border px-4 py-2"><%= wine.label %></td>
+                    <td class="border px-4 py-2"><%= wine.variety %></td>
+                    <td class="border px-4 py-2"><%= wine.designation %></td>
+                    <td class="border px-4 py-2"><%= wine.alcohol %></td>
+                    <td class="border px-4 py-2"><%= wine.years %></td>
+                    <td class="border px-4 py-2"><%= wine.price %></td>
+                    <td class="border px-4 py-2 text-center">
+                        <%= link_to wine_url(wine), class: "text-white bg-sky-400 px-3 py-2 rounded-xl" do %>
+                            Voir
+                        <% end %>
+                    </td>
+                    <td class="border px-4 py-2 text-center">
+                        <%= link_to new_note_url(id: wine.id), class: "text-white bg-sky-400 px-3 py-2 rounded-xl" do %>
+                            Noter
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    <% end %>
+</div>

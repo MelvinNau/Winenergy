@@ -1,0 +1,20 @@
+<div class="flex flex-col gap-y-4">
+    <% if current_user %>
+        <span class="text-xl"> 
+            <%= t("home.welcome") %> <%= current_user.first_name %>
+        </span>
+    <% end %>
+    <span class="text-2xl"><%= t("home.sentence") %></span>
+    <span class="text-3xl"><%= t("home.best_wines") %></span>
+    <div class="flex flex-row gap-x-4">
+        <% @wines_better_scores.each do |wine| %>
+            <%= render "wines/partials/product_sheet", wine: wine, display: "score" %>
+        <% end %>
+    </div>
+    <span class="text-3xl"><%= t("home.best_prices") %></span>
+    <div class="flex flex-row gap-x-4">
+        <% @wines_better_prices.each do |wine| %>
+            <%= render "wines/partials/product_sheet", wine: wine, display: "price" %>
+        <% end %>
+    </div>
+</div>

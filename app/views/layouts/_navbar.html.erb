@@ -1,0 +1,61 @@
+
+<nav class="bg-sky-50 border-gray-200 dark:bg-gray-900">
+  <div class="flex flex-wrap items-center justify-between mx-auto py-4 px-8">
+    <a href="<%= request.base_url %>" class="flex items-center">
+        <%= image_tag 'logo.png', class: "h-32 mr-3 rounded-full" %>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Winergy</span>
+    </a>
+    <form class="w-1/3" data-controller="autocomplete" data-autocomplete-url-value="/autocomplete" role="combobox">   
+      <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+      <div class="relative">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+              </svg>
+          </div>
+          <input type="text" data-autocomplete-target="input" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bordeaux, Chablis ..." required>
+          <input type="hidden" name="wine_id" data-autocomplete-target="hidden"/>  
+      </div>
+      <ul class="list-group" data-autocomplete-target="results"></ul>
+    </form>
+    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <% if !current_user %>
+          <li>
+            <%= link_to "Se connecter", new_user_session_url, class: "bg-sky-400 rounded-xl text-white px-5 py-3" %>         
+          </li>
+        <% else %>
+          <div data-controller="dropdown" class="relative">
+            <button type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+              <%= image_tag "settings.svg", class: "h-12 w-12" %>
+            </button>
+            <div
+              data-dropdown-target="menu"
+              class="hidden transition transform origin-top-right absolute right-0  max-w-sm flex flex-col gap-y-4 bg-white px-4 py-2 border"
+              data-transition-enter-from="opacity-0 scale-95"
+              data-transition-enter-to="opacity-100 scale-100"
+              data-transition-leave-from="opacity-100 scale-100"
+              data-transition-leave-to="opacity-0 scale-95"
+            >
+            <%= link_to edit_user_registration_path, class: "whitespace-nowrap", data: { action: "dropdown#toggle" } do %>
+              <%= t("devise.registrations.edit.account") %>
+            <% end %>
+            <%= link_to favorites_path, class: "whitespace-nowrap", data: { action: "dropdown#toggle" } do %>
+              Mes favoris
+            <% end %>
+            <%= link_to alerts_path, class: "whitespace-nowrap", data: { action: "dropdown#toggle" } do %>
+              Mes alertes
+            <% end %>
+            <% if current_user != true_user %>
+              <%= button_to "Retour à l'administration", stop_inpersonate_path %>
+            <% else %>
+              <%= button_to destroy_user_session_path, method: :delete, class: "whitespace-nowrap", data: { action: "dropdown#toggle" } do %>
+                <%= t("devise.sessions.signed_out_button") %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,7 @@
+<% @search_result.each do |result| %>
+    <%= link_to result, class: "result" do  %>
+        <li role="option" class="p-4">
+            <%= result.name %>
+        </li>
+    <% end %>
+<% end %>

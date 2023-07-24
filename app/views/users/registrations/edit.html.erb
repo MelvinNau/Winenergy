@@ -1,0 +1,42 @@
+<div>
+  <%= link_to '<- Retour', root_url %>
+</div>
+<div class="mx-auto md:w-2/3 w-full flex flex-col gap-y-4">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, html: { class: "mx-auto flex flex-col gap-y-4" }) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "border rounded-xl w-full" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %> <i>(laissez blanc, si vous ne voulez pas le changer)</i><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "border rounded-xl w-full" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characteres minimum</em>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "border rounded-xl w-full" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :current_password %> <i>(nous avons besoin de votre mot de passe courant)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "border rounded-xl w-full" %>
+    </div>
+
+    <div class="actions mx-auto text-center">
+      <%= f.submit "Mettre à jour", class: "text-white bg-sky-400 px-3 py-2 rounded-xl cursor-pointer" %>
+    </div>
+  <% end %>
+  <div class="mx-auto">
+    <%= button_to "Supprimez votre compte", registration_path(resource_name), data: { confirm: "Ëtes-vous sur ?", turbo_confirm: "Ëtes-vous sur ?" }, method: :delete, class: "text-center text-white bg-red-400 px-3 py-2 rounded-xl cursor-pointer" %>
+  </div>
+  <div class="mx-auto">
+    <%= button_to "Devenir #{(current_user.expert? ? "utilisateur" : "expert")} ?", user_change_role_url(role: (current_user.expert? ? :user : :expert)), method: :post, class: "text-center text-white bg-green-400 px-3 py-2 rounded-xl cursor-pointer" %>
+  </div>
+</div>

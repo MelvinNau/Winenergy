@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @import './wine.css'; */
+
+@layer components {
+  .wine_card {
+    @apply border border-gray-400 p-4 max-w-sm rounded-md
+  }
+  .wine_card:hover {
+    @apply hover:scale-105	
+  }
+  .blur-effect {
+    filter: blur(5px);
+  }
+}
