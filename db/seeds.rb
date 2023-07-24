@@ -20,7 +20,6 @@ wine_1 = vendor_1.wines.create(
   designation: "Margaux",
   alcohol: 12,
   years: 1999,
-  price: 1200,
   url_img: "wine_1.jpeg"
 )
   
